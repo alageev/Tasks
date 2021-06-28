@@ -75,7 +75,7 @@ struct CreateTask: View {
         Button {
             addTask()
         } label: {
-             Text("add_Item")
+             Text("add_task")
         }
     }
     

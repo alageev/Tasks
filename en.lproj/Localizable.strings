@@ -1,5 +1,5 @@
 /* No comment provided by engineer. */
-"add_Item" = "Add Task";
+"add_task" = "Add Task";
 
 /* No comment provided by engineer. */
 "by_deadline" = "By deadline";
@@ -61,3 +61,5 @@
 /* No comment provided by engineer. */
 "no_notes" = "No notes";
 
+/* No comment provided by engineer. */
+"tasks_without_group" = "Tasks without group";

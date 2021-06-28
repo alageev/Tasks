@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SortedByDeadlineView: View {
     
+    let tasks: FetchedResults<Task>
     let outdatedTasks: [Task]
     let tasksThisWeek: [Task]
     let tasksThisMonth: [Task]
@@ -16,6 +17,7 @@ struct SortedByDeadlineView: View {
     let completedTasks: [Task]
     
     init(_ tasks: FetchedResults<Task>) {
+        self.tasks = tasks
         let uncompletedTasks = tasks.filter { !$0.completed }
         
         let outdatedTasks = uncompletedTasks.filter { $0.deadline ?? .distantFuture < .now }
@@ -40,36 +42,36 @@ struct SortedByDeadlineView: View {
     }
     
     var body: some View {
-        if outdatedTasks.count > 0 {
-            Section(LocalizedStringKey("outdated_tasks")) {
+        if !outdatedTasks.isEmpty {
+            Section(header: Text("outdated_tasks")) {
                 ForEach(outdatedTasks) { task in
                     TaskRow(task)
                 }
             }
         }
-        if tasksThisWeek.count > 0 {
-            Section(LocalizedStringKey("this_week")) {
+        if !tasksThisWeek.isEmpty {
+            Section(header: Text("this_week")) {
                 ForEach(tasksThisWeek) { task in
                     TaskRow(task)
                 }
             }
         }
-        if tasksThisMonth.count > 0 {
-            Section(LocalizedStringKey("this_month")) {
+        if !tasksThisMonth.isEmpty {
+            Section(header: Text("this_month")) {
                 ForEach(tasksThisMonth) { task in
                     TaskRow(task)
                 }
             }
         }
-        if otherTasks.count > 0 {
-            Section(LocalizedStringKey("other_tasks")) {
+        if !otherTasks.isEmpty {
+            Section(header: Text("other_tasks")) {
                 ForEach(otherTasks) { task in
                     TaskRow(task)
                 }
             }
         }
-        if completedTasks.count > 0 {
-            Section(LocalizedStringKey("completed_tasks")) {
+        if !completedTasks.isEmpty {
+            Section(header: Text("completed_tasks")) {
                 ForEach(completedTasks) { task in
                     TaskRow(task)
                 }

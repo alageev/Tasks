@@ -1,5 +1,5 @@
 /* No comment provided by engineer. */
-"add_Item" = "Добавить задачу";
+"add_task" = "Добавить задачу";
 
 /* No comment provided by engineer. */
 "by_deadline" = "По сроку";
@@ -60,3 +60,6 @@
 
 /* No comment provided by engineer. */
 "no_notes" = "Нет заметок";
+
+/* No comment provided by engineer. */
+"tasks_without_group" = "Задачи без группы";

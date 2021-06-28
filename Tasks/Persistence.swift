@@ -34,6 +34,7 @@ struct PersistenceController {
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "Tasks")
         container.viewContext.automaticallyMergesChangesFromParent = true // idk if it will work
+        container.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }

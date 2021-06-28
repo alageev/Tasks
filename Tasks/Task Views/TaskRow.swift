@@ -23,22 +23,21 @@ struct TaskRow: View {
     }
     
     var body: some View {
-        Button {
-            showDetail.toggle()
-        } label: {
+        NavigationLink(destination: TaskDetail(task: task)) {
             VStack(alignment: .leading) {
                 Text(task.name ?? "no_name")
                     .font(.headline)
-                if showGroup {
-                    Text(task.group?.name ?? "no_groupname")
+                if showGroup, task.group?.name != nil {
+                    Text(task.group!.name!)
                         .font(.subheadline)
                 }
-                Text("\(task.deadline ?? Date(), formatter: dateFormatter)")
-                    .font(.subheadline)
-                    .foregroundColor(task.deadline ?? .distantFuture < .now ? .red : .secondary)
+                if task.deadline != nil {
+                    Text("\(task.deadline!, formatter: dateFormatter)")
+                        .font(.subheadline)
+                        .foregroundColor(task.deadline! < .now ? .red : .secondary)
+                }
             }
         }
-        .foregroundColor(.primary)
         .swipeActions(edge: .leading, allowsFullSwipe: true) {
             Button {
                 viewContext.performAndWait {
@@ -61,7 +60,6 @@ struct TaskRow: View {
                 Label("delete_task", image: "minus.circle.fill")
             }
         }
-        .sheet(isPresented: $showDetail) { TaskDetail(task: task) }
     }
 }
 
