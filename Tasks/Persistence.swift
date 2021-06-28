@@ -1,6 +1,6 @@
 //
 //  Persistence.swift
-//  Backlog
+//  Tasks
 //
 //  Created by Алексей Агеев on 27.06.2021.
 //
@@ -32,7 +32,7 @@ struct PersistenceController {
     let container: NSPersistentCloudKitContainer
 
     init(inMemory: Bool = false) {
-        container = NSPersistentCloudKitContainer(name: "Backlog")
+        container = NSPersistentCloudKitContainer(name: "Tasks")
         container.viewContext.automaticallyMergesChangesFromParent = true // idk if it will work
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")

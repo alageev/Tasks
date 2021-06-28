@@ -1,6 +1,6 @@
 //
 //  SortedByGroupView.swift
-//  Backlog
+//  Tasks
 //
 //  Created by Алексей Агеев on 28.06.2021.
 //
