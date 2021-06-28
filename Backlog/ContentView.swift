@@ -9,104 +9,77 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
+    
+    enum SortingOption {
+        case byDeadline
+        case byGroup
+    }
+    
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Assignment.dueTo, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Task.deadline, ascending: true)],
         animation: .default)
+    private var tasks: FetchedResults<Task>
     
-    private var assignments: FetchedResults<Assignment>
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Group.name, ascending: true)],
+        animation: .default)
+    private var groups: FetchedResults<Group>
 
     @State var createSheetIsPresent = false
-    @State var selectedAssignment: Assignment?
+    @State var sortingOption = SortingOption.byDeadline
+    @State var showSelectSortingOptionAlert = false
+    @State var selectedTask: Task?
     
     var body: some View {
         NavigationView {
             List {
-                Section("Not done") {
-                    ForEach(assignments.filter { !$0.completed }) { assignment in
-                        Button {
-                            selectedAssignment = assignment
-                        } label: {
-                            VStack(alignment: .leading) {
-                                Text(assignment.name ?? "no name")
-                                    .font(.body)
-                                Text("\(assignment.dueTo!, formatter: itemFormatter)")
-                                    .font(.footnote)
-                            }
-                        }
-                        .foregroundColor(.primary)
-                        .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                            Button {
-                                viewContext.performAndWait {
-                                    assignment.completed.toggle()
-                                    try? viewContext.save()
-                                 }
-                            } label: {
-                                Label("Done", image: "checkmark.circle.fill")
-                            }
-                            .tint(assignment.completed ? .red : .green)
-                        }
-                        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-                            Button(role: .destructive) {
-                                viewContext.delete(assignment)
-                                try? viewContext.save()
-                            } label: {
-                                Label("Delete", image: "minus.circle.fill")
-                            }
-                        }
-                    }
-                }
-                Section("Done") {
-                    ForEach(assignments.filter { $0.completed }) { assignment in
-                        Button {
-                            selectedAssignment = assignment
-                        } label: {
-                            VStack(alignment: .leading) {
-                                Text(assignment.name ?? "no name")
-                                    .font(.body)
-                                Text("\(assignment.dueTo!, formatter: itemFormatter)")
-                                    .font(.footnote)
-                            }
-                        }
-                        .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                            Button {
-                                viewContext.performAndWait {
-                                    assignment.completed.toggle()
-                                    try? viewContext.save()
-                                 }
-                            } label: {
-                                Label("Not Done", image: "xmark.circle.fill")
-                            }
-                            .tint(.red)
-                        }
-                        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-                            Button(role: .destructive) {
-                                viewContext.delete(assignment)
-                                try? viewContext.save()
-                            } label: {
-                                Label("Delete", image: "minus.circle.fill")
-                            }
-                        }
-                    }
+                switch sortingOption {
+                case .byDeadline:
+                    SortedByDeadlineView(tasks)
+                case .byGroup:
+                    SortedByGroupView(tasks)
                 }
             }
-            .navigationBarTitle(Text("Assignments"))
-            .sheet(isPresented: $createSheetIsPresent, content: {CreateAssignment()})
-            .sheet(item: $selectedAssignment, content: {AssignmentDetail(assignment: $0)})
-            .toolbar {
+            .navigationBarTitle(Text("tasks"))
+            .sheet(isPresented: $createSheetIsPresent) { CreateTask(groups: groups) }
+            .confirmationDialog("sort_by_dialog", isPresented: $showSelectSortingOptionAlert, titleVisibility: .visible) {
                 Button {
-                    createSheetIsPresent = true
+                    withAnimation {
+                        sortingOption = .byDeadline
+                    }
                 } label: {
-                    Label("Add Item", systemImage: "plus")
+                    Label("by_deadline", systemImage: "clock.badge.checkmark")
                 }
+                Button {
+                    withAnimation {
+                        sortingOption = .byGroup
+                    }
+                } label: {
+                    Label("by_group", systemImage: "folder")
+                }
+                Button("cancel", role: .cancel) { }
             }
+            .navigationBarItems(
+                leading:
+                    Button {
+                        showSelectSortingOptionAlert = true
+                    } label: {
+                        Label("sort", systemImage: "arrow.up.arrow.down")
+                    },
+                trailing:
+                    Button {
+                        createSheetIsPresent = true
+                    } label: {
+                        Label("add_Item", systemImage: "plus")
+                    })
         }
     }
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { assignments[$0] }.forEach(viewContext.delete)
+            offsets.map { tasks[$0] }.forEach(viewContext.delete)
 
             do {
                 try viewContext.save()
@@ -119,13 +92,6 @@ struct ContentView: View {
         }
     }
 }
-
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

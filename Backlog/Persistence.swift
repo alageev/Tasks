@@ -14,9 +14,9 @@ struct PersistenceController {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
         for i in 0..<10 {
-            let newItem = Assignment(context: viewContext)
-            newItem.name = "assignment \(i)"
-            newItem.dueTo = Date()
+            let newItem = Task(context: viewContext)
+            newItem.name = "task \(i)"
+            newItem.deadline = Date()
         }
         do {
             try viewContext.save()
@@ -33,6 +33,7 @@ struct PersistenceController {
 
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "Backlog")
+        container.viewContext.automaticallyMergesChangesFromParent = true // idk if it will work
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }

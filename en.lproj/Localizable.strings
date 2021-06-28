@@ -1,0 +1,45 @@
+/* No comment provided by engineer. */
+"add_Item" = "Add Task";
+
+/* No comment provided by engineer. */
+"by_deadline" = "By deadline";
+
+/* No comment provided by engineer. */
+"by_group" = "By group";
+
+/* No comment provided by engineer. */
+"cancel" = "Cancel";
+
+/* No comment provided by engineer. */
+"completed_tasks" = "Completed tasks";
+
+/* No comment provided by engineer. */
+"delete_task" = "Delete";
+
+/* No comment provided by engineer. */
+"other_tasks" = "Other tasks";
+
+/* No comment provided by engineer. */
+"outdated_tasks" = "Outdated tasks";
+
+/* No comment provided by engineer. */
+"sort" = "Sort";
+
+/* No comment provided by engineer. */
+"sort_by_dialog" = "Sort tasks";
+
+/* No comment provided by engineer. */
+"task_is_done" = "Done";
+
+/* No comment provided by engineer. */
+"task_is_not_done" = "Not done";
+
+/* No comment provided by engineer. */
+"tasks" = "Tasks";
+
+/* No comment provided by engineer. */
+"this_month" = "This month";
+
+/* No comment provided by engineer. */
+"this_week" = "This week";
+

@@ -1,0 +1,62 @@
+/* No comment provided by engineer. */
+"add_Item" = "Добавить задачу";
+
+/* No comment provided by engineer. */
+"by_deadline" = "По сроку";
+
+/* No comment provided by engineer. */
+"by_group" = "По группе";
+
+/* No comment provided by engineer. */
+"cancel" = "Отмена";
+
+/* No comment provided by engineer. */
+"completed_tasks" = "Завершённые задачи";
+
+/* No comment provided by engineer. */
+"delete_task" = "Удалить";
+
+/* No comment provided by engineer. */
+"other_tasks" = "Другие задачи";
+
+/* No comment provided by engineer. */
+"outdated_tasks" = "Просроченные задачи";
+
+/* No comment provided by engineer. */
+"sort" = "Сортировать";
+
+/* No comment provided by engineer. */
+"sort_by_dialog" = "Сортировать задачи";
+
+/* No comment provided by engineer. */
+"task_is_done" = "Готово";
+
+/* No comment provided by engineer. */
+"task_is_not_done" = "Не готово";
+
+/* No comment provided by engineer. */
+"tasks" = "Задачи";
+
+/* No comment provided by engineer. */
+"this_month" = "В этом месяце";
+
+/* No comment provided by engineer. */
+"this_week" = "На этой неделе";
+
+/* No comment provided by engineer. */
+"create_new_task" = "Новая задача";
+
+/* No comment provided by engineer. */
+"task_name" = "Название задачи";
+
+/* No comment provided by engineer. */
+"group_name" = "Группа";
+
+/* No comment provided by engineer. */
+"task_deadline" = "Сделать до";
+
+/* No comment provided by engineer. */
+"task_notes" = "Заметки";
+
+/* No comment provided by engineer. */
+"no_notes" = "Нет заметок";

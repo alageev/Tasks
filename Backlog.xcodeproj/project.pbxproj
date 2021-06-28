@@ -7,18 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6FA22BF326893245002EFD71 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FA22BF226893245002EFD71 /* CloudKit.framework */; };
+		6FA22BFC26893F2C002EFD71 /* SortedByDeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA22BFB26893F2C002EFD71 /* SortedByDeadlineView.swift */; };
+		6FA22BFE26894057002EFD71 /* SortedByGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA22BFD26894057002EFD71 /* SortedByGroupView.swift */; };
+		6FA22C17268A03C0002EFD71 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6FA22C15268A03C0002EFD71 /* Localizable.strings */; };
 		6FEA2DAE2688F2E90076FED3 /* BacklogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEA2DAD2688F2E90076FED3 /* BacklogApp.swift */; };
 		6FEA2DB02688F2E90076FED3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEA2DAF2688F2E90076FED3 /* ContentView.swift */; };
 		6FEA2DB22688F2EA0076FED3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FEA2DB12688F2EA0076FED3 /* Assets.xcassets */; };
 		6FEA2DB52688F2EA0076FED3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FEA2DB42688F2EA0076FED3 /* Preview Assets.xcassets */; };
 		6FEA2DB72688F2EA0076FED3 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEA2DB62688F2EA0076FED3 /* Persistence.swift */; };
 		6FEA2DBA2688F2EA0076FED3 /* Backlog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6FEA2DB82688F2EA0076FED3 /* Backlog.xcdatamodeld */; };
-		6FEA2DCA2688FD240076FED3 /* CreateAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEA2DC92688FD240076FED3 /* CreateAssignment.swift */; };
-		6FEA2DD4268909D90076FED3 /* AssignmentRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEA2DD3268909D90076FED3 /* AssignmentRow.swift */; };
-		6FFBA75F268917AC004332F7 /* AssignmentDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFBA75E268917AC004332F7 /* AssignmentDetail.swift */; };
+		6FEA2DCA2688FD240076FED3 /* CreateTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEA2DC92688FD240076FED3 /* CreateTask.swift */; };
+		6FEA2DD4268909D90076FED3 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEA2DD3268909D90076FED3 /* TaskRow.swift */; };
+		6FFBA75F268917AC004332F7 /* TaskDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFBA75E268917AC004332F7 /* TaskDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6FA22BF026893204002EFD71 /* Backlog.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Backlog.entitlements; sourceTree = "<group>"; };
+		6FA22BF226893245002EFD71 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		6FA22BFB26893F2C002EFD71 /* SortedByDeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedByDeadlineView.swift; sourceTree = "<group>"; };
+		6FA22BFD26894057002EFD71 /* SortedByGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedByGroupView.swift; sourceTree = "<group>"; };
+		6FA22C16268A03C0002EFD71 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6FA22C18268A0619002EFD71 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6FEA2DAA2688F2E90076FED3 /* Backlog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Backlog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FEA2DAD2688F2E90076FED3 /* BacklogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BacklogApp.swift; sourceTree = "<group>"; };
 		6FEA2DAF2688F2E90076FED3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -26,9 +36,9 @@
 		6FEA2DB42688F2EA0076FED3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6FEA2DB62688F2EA0076FED3 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		6FEA2DB92688F2EA0076FED3 /* Backlog.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Backlog.xcdatamodel; sourceTree = "<group>"; };
-		6FEA2DC92688FD240076FED3 /* CreateAssignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAssignment.swift; sourceTree = "<group>"; };
-		6FEA2DD3268909D90076FED3 /* AssignmentRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentRow.swift; sourceTree = "<group>"; };
-		6FFBA75E268917AC004332F7 /* AssignmentDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentDetail.swift; sourceTree = "<group>"; };
+		6FEA2DC92688FD240076FED3 /* CreateTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTask.swift; sourceTree = "<group>"; };
+		6FEA2DD3268909D90076FED3 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
+		6FFBA75E268917AC004332F7 /* TaskDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,17 +46,47 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FA22BF326893245002EFD71 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6FA22BF126893245002EFD71 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6FA22BF226893245002EFD71 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6FA22BF826893B8F002EFD71 /* Task Views */ = {
+			isa = PBXGroup;
+			children = (
+				6FEA2DC92688FD240076FED3 /* CreateTask.swift */,
+				6FEA2DD3268909D90076FED3 /* TaskRow.swift */,
+				6FFBA75E268917AC004332F7 /* TaskDetail.swift */,
+			);
+			path = "Task Views";
+			sourceTree = "<group>";
+		};
+		6FA22BFA26893EE1002EFD71 /* List Views */ = {
+			isa = PBXGroup;
+			children = (
+				6FA22BFB26893F2C002EFD71 /* SortedByDeadlineView.swift */,
+				6FA22BFD26894057002EFD71 /* SortedByGroupView.swift */,
+			);
+			path = "List Views";
+			sourceTree = "<group>";
+		};
 		6FEA2DA12688F2E90076FED3 = {
 			isa = PBXGroup;
 			children = (
+				6FA22C15268A03C0002EFD71 /* Localizable.strings */,
 				6FEA2DAC2688F2E90076FED3 /* Backlog */,
 				6FEA2DAB2688F2E90076FED3 /* Products */,
+				6FA22BF126893245002EFD71 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -61,14 +101,14 @@
 		6FEA2DAC2688F2E90076FED3 /* Backlog */ = {
 			isa = PBXGroup;
 			children = (
-				6FEA2DAD2688F2E90076FED3 /* BacklogApp.swift */,
 				6FEA2DAF2688F2E90076FED3 /* ContentView.swift */,
-				6FEA2DC92688FD240076FED3 /* CreateAssignment.swift */,
-				6FEA2DD3268909D90076FED3 /* AssignmentRow.swift */,
-				6FFBA75E268917AC004332F7 /* AssignmentDetail.swift */,
-				6FEA2DB12688F2EA0076FED3 /* Assets.xcassets */,
+				6FA22BFA26893EE1002EFD71 /* List Views */,
+				6FA22BF826893B8F002EFD71 /* Task Views */,
+				6FEA2DAD2688F2E90076FED3 /* BacklogApp.swift */,
 				6FEA2DB62688F2EA0076FED3 /* Persistence.swift */,
+				6FEA2DB12688F2EA0076FED3 /* Assets.xcassets */,
 				6FEA2DB82688F2EA0076FED3 /* Backlog.xcdatamodeld */,
+				6FA22BF026893204002EFD71 /* Backlog.entitlements */,
 				6FEA2DB32688F2EA0076FED3 /* Preview Content */,
 			);
 			path = Backlog;
@@ -124,6 +164,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 6FEA2DA12688F2E90076FED3;
 			productRefGroup = 6FEA2DAB2688F2E90076FED3 /* Products */;
@@ -141,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FEA2DB52688F2EA0076FED3 /* Preview Assets.xcassets in Resources */,
+				6FA22C17268A03C0002EFD71 /* Localizable.strings in Resources */,
 				6FEA2DB22688F2EA0076FED3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,16 +195,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FEA2DB72688F2EA0076FED3 /* Persistence.swift in Sources */,
-				6FEA2DD4268909D90076FED3 /* AssignmentRow.swift in Sources */,
-				6FEA2DCA2688FD240076FED3 /* CreateAssignment.swift in Sources */,
+				6FEA2DD4268909D90076FED3 /* TaskRow.swift in Sources */,
+				6FEA2DCA2688FD240076FED3 /* CreateTask.swift in Sources */,
 				6FEA2DB02688F2E90076FED3 /* ContentView.swift in Sources */,
 				6FEA2DAE2688F2E90076FED3 /* BacklogApp.swift in Sources */,
-				6FFBA75F268917AC004332F7 /* AssignmentDetail.swift in Sources */,
+				6FFBA75F268917AC004332F7 /* TaskDetail.swift in Sources */,
 				6FEA2DBA2688F2EA0076FED3 /* Backlog.xcdatamodeld in Sources */,
+				6FA22BFC26893F2C002EFD71 /* SortedByDeadlineView.swift in Sources */,
+				6FA22BFE26894057002EFD71 /* SortedByGroupView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6FA22C15268A03C0002EFD71 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6FA22C16268A03C0002EFD71 /* ru */,
+				6FA22C18268A0619002EFD71 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		6FEA2DBB2688F2EA0076FED3 /* Debug */ = {
@@ -286,6 +342,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Backlog/Backlog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Backlog/Preview Content\"";
@@ -316,6 +373,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Backlog/Backlog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Backlog/Preview Content\"";
