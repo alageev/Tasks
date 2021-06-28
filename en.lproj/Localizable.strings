@@ -43,3 +43,21 @@
 /* No comment provided by engineer. */
 "this_week" = "This week";
 
+/* No comment provided by engineer. */
+"create_new_task" = "Create new task";
+
+/* No comment provided by engineer. */
+"task_name" = "Task name";
+
+/* No comment provided by engineer. */
+"group_name" = "Group";
+
+/* No comment provided by engineer. */
+"task_deadline" = "Deadline";
+
+/* No comment provided by engineer. */
+"task_notes" = "Notes";
+
+/* No comment provided by engineer. */
+"no_notes" = "No notes";
+
