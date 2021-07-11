@@ -34,7 +34,7 @@ struct TaskRow: View {
                 if task.deadline != nil {
                     Text("\(task.deadline!, formatter: dateFormatter)")
                         .font(.subheadline)
-                        .foregroundColor(task.deadline! < .now ? .red : .secondary)
+                        .foregroundColor(task.deadline! > .now || task.completed ? .secondary : .red)
                 }
             }
         }

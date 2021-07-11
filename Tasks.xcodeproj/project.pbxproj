@@ -103,11 +103,11 @@
 		6FEA2DAC2688F2E90076FED3 /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
+				6FEA2DAD2688F2E90076FED3 /* TasksApp.swift */,
+				6FEA2DB62688F2EA0076FED3 /* Persistence.swift */,
 				6FEA2DAF2688F2E90076FED3 /* ContentView.swift */,
 				6FA22BFA26893EE1002EFD71 /* List Views */,
 				6FA22BF826893B8F002EFD71 /* Task Views */,
-				6FEA2DAD2688F2E90076FED3 /* TasksApp.swift */,
-				6FEA2DB62688F2EA0076FED3 /* Persistence.swift */,
 				6FEA2DB12688F2EA0076FED3 /* Assets.xcassets */,
 				6FEA2DB82688F2EA0076FED3 /* Tasks.xcdatamodeld */,
 				6FA22BF026893204002EFD71 /* Tasks.entitlements */,
