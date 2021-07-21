@@ -27,9 +27,11 @@ struct TaskRow: View {
             VStack(alignment: .leading) {
                 Text(task.name ?? "no_name")
                     .font(.headline)
+                    .foregroundColor(.primary)
                 if showGroup, task.group?.name != nil {
                     Text(task.group!.name!)
                         .font(.subheadline)
+                        .foregroundColor(.secondary)
                 }
                 if task.deadline != nil {
                     Text("\(task.deadline!, formatter: dateFormatter)")
@@ -46,7 +48,8 @@ struct TaskRow: View {
                  }
             } label: {
                 Label(task.completed ? "task_is_not_done" : "task_is_done",
-                      image: task.completed ? "xmark.circle.fill" : "checkmark.circle.fill")
+                      systemImage: task.completed ? "xmark.circle.fill" : "checkmark.circle.fill")
+                    .labelStyle(.titleAndIcon)
             }
             .tint(task.completed ? .red : .green)
         }
@@ -57,15 +60,54 @@ struct TaskRow: View {
                     try? viewContext.save()
                  }
             } label: {
-                Label("delete_task", image: "minus.circle.fill")
+                Label("delete_task", systemImage: "minus.circle.fill")
+                    .labelStyle(.titleAndIcon)
             }
         }
     }
 }
 
-struct AssignmentRow_Previews: PreviewProvider {
+struct TaskRow_Previews: PreviewProvider {
+    private static let fetchRequest = NSFetchRequest<Task>(entityName: "Task")
+    private static let tasks =
+    try? PersistenceController.preview.container.viewContext.fetch(fetchRequest).sorted(by: { $0.deadline! < $1.deadline! })
+    
     static var previews: some View {
-        TaskRow(Task())
+        TaskRow(tasks?[0] ?? Task())
+            .previewLayout(.sizeThatFits)
+            .padding()
+            .background(Color.white)
+            .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+            .padding()
+            .background(Color(uiColor: .systemGroupedBackground))
+        TaskRow(tasks?[1] ?? Task())
+            .previewLayout(.sizeThatFits)
+            .padding()
+            .background(Color.white)
+            .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+            .padding()
+            .background(Color(uiColor: .systemGroupedBackground))
+        TaskRow(tasks?[2] ?? Task())
+            .previewLayout(.sizeThatFits)
+            .padding()
+            .background(Color.white)
+            .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+            .padding()
+            .background(Color(uiColor: .systemGroupedBackground))
+        TaskRow(tasks?[3] ?? Task())
+            .previewLayout(.sizeThatFits)
+            .padding()
+            .background(Color.white)
+            .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+            .padding()
+            .background(Color(uiColor: .systemGroupedBackground))
+        TaskRow(tasks?[4] ?? Task())
+            .previewLayout(.sizeThatFits)
+            .padding()
+            .background(Color.white)
+            .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+            .padding()
+            .background(Color(uiColor: .systemGroupedBackground))
     }
 }
 

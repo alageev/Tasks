@@ -13,11 +13,39 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        for i in 0..<10 {
-            let newItem = Task(context: viewContext)
-            newItem.name = "task \(i)"
-            newItem.deadline = Date()
-        }
+        
+        let firstTaskGroup = Group(context: viewContext)
+        firstTaskGroup.name = "Group 1"
+        
+        let secondTaskGroup = Group(context: viewContext)
+        secondTaskGroup.name = "Group 2"
+        
+        
+        let outdatedTask = Task(context: viewContext)
+        outdatedTask.name = "Outdated Task"
+        outdatedTask.deadline = .distantPast
+        outdatedTask.group = firstTaskGroup
+        
+        let thisWeekTask = Task(context: viewContext)
+        thisWeekTask.name = "This Week Task"
+        thisWeekTask.deadline = .now + 432_000
+        thisWeekTask.group = secondTaskGroup
+        
+        let thisMonthTask = Task(context: viewContext)
+        thisMonthTask.name = "This Month Task"
+        thisMonthTask.deadline = .now + 1_209_600
+        thisMonthTask.group = secondTaskGroup
+        
+        let otherTask = Task(context: viewContext)
+        otherTask.name = "Other Task"
+        otherTask.deadline = .distantFuture
+        otherTask.group = secondTaskGroup
+        
+        let completedTask = Task(context: viewContext)
+        completedTask.name = "Completed Task"
+        completedTask.deadline = .distantFuture
+        completedTask.group = secondTaskGroup
+        
         do {
             try viewContext.save()
         } catch {

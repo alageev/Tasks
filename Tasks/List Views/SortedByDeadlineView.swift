@@ -42,41 +42,11 @@ struct SortedByDeadlineView: View {
     }
     
     var body: some View {
-        if !outdatedTasks.isEmpty {
-            Section(header: Text("outdated_tasks")) {
-                ForEach(outdatedTasks) { task in
-                    TaskRow(task)
-                }
-            }
-        }
-        if !tasksThisWeek.isEmpty {
-            Section(header: Text("this_week")) {
-                ForEach(tasksThisWeek) { task in
-                    TaskRow(task)
-                }
-            }
-        }
-        if !tasksThisMonth.isEmpty {
-            Section(header: Text("this_month")) {
-                ForEach(tasksThisMonth) { task in
-                    TaskRow(task)
-                }
-            }
-        }
-        if !otherTasks.isEmpty {
-            Section(header: Text("other_tasks")) {
-                ForEach(otherTasks) { task in
-                    TaskRow(task)
-                }
-            }
-        }
-        if !completedTasks.isEmpty {
-            Section(header: Text("completed_tasks")) {
-                ForEach(completedTasks) { task in
-                    TaskRow(task)
-                }
-            }
-        }
+        TasksSection(header: "outdated_tasks",  tasks: outdatedTasks)
+        TasksSection(header: "this_week",       tasks: tasksThisWeek)
+        TasksSection(header: "this_month",      tasks: tasksThisMonth)
+        TasksSection(header: "other_tasks",     tasks: otherTasks)
+        TasksSection(header: "completed_tasks", tasks: completedTasks)
     }
 }
 

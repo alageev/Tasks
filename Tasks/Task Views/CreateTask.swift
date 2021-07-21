@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct CreateTask: View {
     
@@ -24,8 +25,6 @@ struct CreateTask: View {
     @State var taskDeadline = Date()
     @State var taskComment = ""
     @FocusState var focusedField: Field?
-    
-    let groups: FetchedResults<Group>
     
     var body: some View {
         NavigationView {
@@ -88,17 +87,27 @@ struct CreateTask: View {
     }
     
     private func addTask() {
+        let fetchRequest = NSFetchRequest<Group>(entityName: "Group")
+        fetchRequest.predicate = NSPredicate(
+            format: "name == %@", groupName.trimmingCharacters(in: [" "])
+        )
         
-        var group = groups.filter { $0.name == groupName.trimmingCharacters(in: [" "]) }.first
+        let fetchedGroup = try? PersistenceController.shared.container.viewContext.fetch(fetchRequest).first
         
         let newItem = Task(context: viewContext)
         newItem.deadline = taskDeadline
         newItem.name = taskName.trimmingCharacters(in: [" "])
-        if group == nil {
+        let group: Group
+        
+        if fetchedGroup == nil {
             group = Group(context: viewContext)
-            group!.name = groupName.trimmingCharacters(in: [" "])
+            group.name = groupName.trimmingCharacters(in: [" "])
+        } else {
+            group = fetchedGroup!
         }
+        
         newItem.group = group
+        
         do {
             try viewContext.save()
         } catch {
@@ -111,8 +120,8 @@ struct CreateTask: View {
     }
 }
 
-//struct CreateTask_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CreateTask()
-//    }
-//}
+struct CreateTask_Previews: PreviewProvider {
+    static var previews: some View {
+        CreateTask()
+    }
+}

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct TaskDetail: View {
     
@@ -37,8 +38,14 @@ struct TaskDetail: View {
 }
 
 struct TaskDetail_Previews: PreviewProvider {
+    
+    private static let fetchRequest = NSFetchRequest<Task>(entityName: "Task")
+    private static let tasks =
+    try? PersistenceController.preview.container.viewContext.fetch(fetchRequest).sorted(by: { $0.deadline! < $1.deadline! })
+    
     static var previews: some View {
-        TaskDetail(task: Task())
+        TaskDetail(task: tasks?[0] ?? Task())
+            .previewLayout(.sizeThatFits)
     }
 }
 

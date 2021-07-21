@@ -22,9 +22,6 @@ struct ContentView: View {
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Task.deadline, ascending: true)], animation: .default)
     private var tasks: FetchedResults<Task>
     
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Group.name, ascending: true)], animation: .default)
-    private var groups: FetchedResults<Group>
-
     @State var createSheetIsPresent = false
     @AppStorage("sortingOption") var sortingOption = SortingOption.byDeadline
     @State var showSelectSortingOptionAlert = false
@@ -41,7 +38,9 @@ struct ContentView: View {
             }
             .animation(.easeInOut, value: sortingOption)
             .navigationBarTitle(Text("tasks"))
-            .sheet(isPresented: $createSheetIsPresent) { CreateTask(groups: groups) }
+            .sheet(isPresented: $createSheetIsPresent) {
+                CreateTask()
+            }
             .confirmationDialog("sort_by_dialog", isPresented: $showSelectSortingOptionAlert) {
                 Button {
                     sortingOption = .byDeadline

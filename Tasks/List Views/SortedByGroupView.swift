@@ -41,19 +41,11 @@ struct SortedByGroupView: View {
     
     var body: some View {
         ForEach(tasks.keys.sorted { $0 < $1 }, id: \.self) { group in
-            Section(LocalizedStringKey(group.isEmpty ? "tasks_without_group" : group)) {
-                ForEach(tasks[group]!, id: \.self) { task in
-                    TaskRow(task, showGroup: false)
-                }
-            }
+            TasksSection(header: LocalizedStringKey(group.isEmpty ? "tasks_without_group" : group),
+                         tasks: tasks[group]!)
         }
-        if !completedTasks.isEmpty {
-            Section(header: Text("completed_tasks")) {
-                ForEach(completedTasks) { task in
-                    TaskRow(task)
-                }
-            }
-        }
+        
+        TasksSection(header: "completed_tasks", tasks: completedTasks)
     }
 }
 
