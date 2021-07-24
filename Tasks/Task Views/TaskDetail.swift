@@ -1,6 +1,6 @@
 //
 //  TaskDetail.swift
-//  Tasks
+//  Tasks (iOS)
 //
 //  Created by Алексей Агеев on 27.06.2021.
 //
@@ -24,7 +24,7 @@ struct TaskDetail: View {
             
             if task.deadline != nil {
                 Section(header: Text("task_deadline")) {
-                    Text(task.deadline!, formatter: dateFormatter)
+                    Text(task.deadline!, formatter: CustomDateFormatter())
                 }
             }
             
@@ -48,10 +48,3 @@ struct TaskDetail_Previews: PreviewProvider {
             .previewLayout(.sizeThatFits)
     }
 }
-
-private let dateFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .full
-    formatter.timeStyle = .none
-    return formatter
-}()

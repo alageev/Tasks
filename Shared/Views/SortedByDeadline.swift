@@ -1,13 +1,13 @@
 //
-//  SortedByDeadlineView.swift
+//  SortedByDeadline.swift
 //  Tasks
 //
-//  Created by Алексей Агеев on 28.06.2021.
+//  Created by Алексей Агеев on 11.07.2021.
 //
 
 import SwiftUI
 
-struct SortedByDeadlineView: View {
+struct SortedByDeadline: View {
     
     let tasks: FetchedResults<Task>
     let outdatedTasks: [Task]
@@ -42,16 +42,26 @@ struct SortedByDeadlineView: View {
     }
     
     var body: some View {
-        TasksSection(header: "outdated_tasks",  tasks: outdatedTasks)
-        TasksSection(header: "this_week",       tasks: tasksThisWeek)
-        TasksSection(header: "this_month",      tasks: tasksThisMonth)
-        TasksSection(header: "other_tasks",     tasks: otherTasks)
-        TasksSection(header: "completed_tasks", tasks: completedTasks)
+        #if os(iOS)
+            TasksSection(header: "outdated_tasks",  tasks: outdatedTasks)
+            TasksSection(header: "this_week",       tasks: tasksThisWeek)
+            TasksSection(header: "this_month",      tasks: tasksThisMonth)
+            TasksSection(header: "other_tasks",     tasks: otherTasks)
+            TasksSection(header: "completed_tasks", tasks: completedTasks)
+        #elseif os(macOS)
+            TasksGroup(header: "outdated_tasks", tasks: outdatedTasks)
+                .accentColor(.red)
+            TasksGroup(header: "this_week", tasks: tasksThisWeek)
+            TasksGroup(header: "this_month", tasks: tasksThisMonth)
+            TasksGroup(header: "other_tasks", tasks: otherTasks)
+            TasksGroup(header: "completed_tasks", tasks: completedTasks)
+                .accentColor(.green)
+        #endif
     }
 }
 
-//struct SortedByDeadlineView_Previews: PreviewProvider {
+//struct SortedByDeadline_Previews: PreviewProvider {
 //    static var previews: some View {
-//        SortedByDeadlineView(FetchedResults<Task>.)
+//        SortedByDeadline(FetchedResults<Task>.)
 //    }
 //}

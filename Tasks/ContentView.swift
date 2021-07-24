@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  Tasks
+//  Tasks (iOS)
 //
 //  Created by Алексей Агеев on 27.06.2021.
 //
@@ -10,20 +10,13 @@ import CoreData
 
 struct ContentView: View {
     
-    enum SortingOption: String, Identifiable, CaseIterable {
-        case byDeadline
-        case byGroup
-        
-        var id: String { rawValue }
-    }
-    
     @Environment(\.managedObjectContext) private var viewContext
+    @AppStorage("sortingOption") var sortingOption = SortingOption.byDeadline
     
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Task.deadline, ascending: true)], animation: .default)
     private var tasks: FetchedResults<Task>
     
     @State var createSheetIsPresent = false
-    @AppStorage("sortingOption") var sortingOption = SortingOption.byDeadline
     @State var showSelectSortingOptionAlert = false
     
     var body: some View {
@@ -31,9 +24,9 @@ struct ContentView: View {
             List {
                 switch sortingOption {
                 case .byDeadline:
-                    SortedByDeadlineView(tasks)
+                    SortedByDeadline(tasks)
                 case .byGroup:
-                    SortedByGroupView(tasks)
+                    SortedByGroup(tasks)
                 }
             }
             .animation(.easeInOut, value: sortingOption)

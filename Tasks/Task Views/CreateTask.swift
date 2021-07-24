@@ -1,6 +1,6 @@
 //
 //  CreateTask.swift
-//  Tasks
+//  Tasks (iOS)
 //
 //  Created by Алексей Агеев on 27.06.2021.
 //

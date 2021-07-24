@@ -1,13 +1,13 @@
 //
-//  SortedByGroupView.swift
+//  SortedByGroup.swift
 //  Tasks
 //
-//  Created by Алексей Агеев on 28.06.2021.
+//  Created by Алексей Агеев on 11.07.2021.
 //
 
 import SwiftUI
 
-struct SortedByGroupView: View {
+struct SortedByGroup: View {
     
     let fetchedTasks: FetchedResults<Task>
     var tasks = [String: [Task]]()
@@ -40,17 +40,26 @@ struct SortedByGroupView: View {
     }
     
     var body: some View {
-        ForEach(tasks.keys.sorted { $0 < $1 }, id: \.self) { group in
-            TasksSection(header: LocalizedStringKey(group.isEmpty ? "tasks_without_group" : group),
-                         tasks: tasks[group]!)
-        }
         
-        TasksSection(header: "completed_tasks", tasks: completedTasks)
+        ForEach(tasks.keys.sorted { $0 < $1 }, id: \.self) { group in
+            #if os(iOS)
+                TasksSection(header: LocalizedStringKey(group.isEmpty ? "tasks_without_group" : group),
+                             tasks: tasks[group]!)
+            #elseif os(macOS)
+                TasksGroup(header: group.isEmpty ? "tasks_without_group" : LocalizedStringKey(group),
+                           tasks: tasks[group]!)
+            #endif
+        }
+        #if os(iOS)
+            TasksSection(header: "completed_tasks", tasks: completedTasks)
+        #elseif os(macOS)
+            TasksGroup(header: "completed_tasks", tasks: completedTasks)
+        #endif
     }
 }
 
-//struct SortedByGroupsView_Previews: PreviewProvider {
+//struct SortedByGroups_Previews: PreviewProvider {
 //    static var previews: some View {
-//        SortedByGroupView()
+//        SortedByGroup()
 //    }
 //}

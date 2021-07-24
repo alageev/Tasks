@@ -1,13 +1,13 @@
 //
 //  TasksSection.swift
-//  Tasks
+//  Tasks (iOS)
 //
 //  Created by Алексей Агеев on 21.07.2021.
 //
 
 import SwiftUI
 
-struct TasksSection: View {
+struct TasksSection: TaskGroupViewProtocol {
     let header: LocalizedStringKey
     let tasks: [Task]
     
