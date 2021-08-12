@@ -24,7 +24,7 @@ struct TaskDetail: View {
             
             if task.deadline != nil {
                 Section(header: Text("task_deadline")) {
-                    Text(task.deadline!, formatter: CustomDateFormatter())
+                    Text(task.deadline!, formatter: DateFormatter.fullDateNoneTime)
                 }
             }
             

@@ -43,7 +43,7 @@ struct SortedByGroup: View {
         
         ForEach(tasks.keys.sorted { $0 < $1 }, id: \.self) { group in
             #if os(iOS)
-                TasksSection(header: LocalizedStringKey(group.isEmpty ? "tasks_without_group" : group),
+                TasksSection(header: group.isEmpty ? "tasks_without_group" : LocalizedStringKey(group),
                              tasks: tasks[group]!)
             #elseif os(macOS)
                 TasksGroup(header: group.isEmpty ? "tasks_without_group" : LocalizedStringKey(group),
@@ -51,7 +51,7 @@ struct SortedByGroup: View {
             #endif
         }
         #if os(iOS)
-            TasksSection(header: "completed_tasks", tasks: completedTasks)
+            TasksSection(header: "completed_tasks", tasks: completedTasks, showGroup: true)
         #elseif os(macOS)
             TasksGroup(header: "completed_tasks", tasks: completedTasks)
         #endif

@@ -31,10 +31,10 @@ struct TaskRow: View {
                 if showGroup, task.group?.name != nil {
                     Text(task.group!.name!)
                         .font(.subheadline)
-                        .foregroundColor(.secondary)
+//                        .foregroundColor(.secondary)
                 }
                 if task.deadline != nil {
-                    Text("\(task.deadline!, formatter: dateFormatter)")
+                    Text("\(task.deadline!, formatter: DateFormatter.fullDateNoneTime)")
                         .font(.subheadline)
                         .foregroundColor(task.deadline! > .now || task.completed ? .secondary : .red)
                 }
@@ -110,10 +110,3 @@ struct TaskRow_Previews: PreviewProvider {
             .background(Color(uiColor: .systemGroupedBackground))
     }
 }
-
-private let dateFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .full
-    formatter.timeStyle = .none
-    return formatter
-}()

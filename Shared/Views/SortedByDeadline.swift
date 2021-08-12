@@ -43,11 +43,11 @@ struct SortedByDeadline: View {
     
     var body: some View {
         #if os(iOS)
-            TasksSection(header: "outdated_tasks",  tasks: outdatedTasks)
-            TasksSection(header: "this_week",       tasks: tasksThisWeek)
-            TasksSection(header: "this_month",      tasks: tasksThisMonth)
-            TasksSection(header: "other_tasks",     tasks: otherTasks)
-            TasksSection(header: "completed_tasks", tasks: completedTasks)
+            TasksSection(header: "outdated_tasks", tasks: outdatedTasks, showGroup: true)
+            TasksSection(header: "this_week", tasks: tasksThisWeek, showGroup: true)
+            TasksSection(header: "this_month", tasks: tasksThisMonth, showGroup: true)
+            TasksSection(header: "other_tasks", tasks: otherTasks, showGroup: true)
+            TasksSection(header: "completed_tasks", tasks: completedTasks, showGroup: true)
         #elseif os(macOS)
             TasksGroup(header: "outdated_tasks", tasks: outdatedTasks)
                 .accentColor(.red)
